@@ -15,7 +15,12 @@ version = "0.4.1"
 [dependencies]
 anyhow = "1"
 bytes = "1"
-clap = {version = "4.3.15", features = ["color", "help", "usage", "derive"], optional = true}
+clap = { version = "4.3.15", features = [
+    "color",
+    "help",
+    "usage",
+    "derive",
+], optional = true }
 prost = "0.11"
 rand = "0.8.5"
 
@@ -28,10 +33,12 @@ geometry-rs = "0.2.1"
 [dev-dependencies]
 lazy_static = "1.4.0"
 
-criterion = {version = "0.5", features = ["html_reports"]}
+criterion = { version = "0.5", features = ["html_reports"] }
 
 # cities-json = { git = "https://github.com/ringsaturn/go-cities.json", rev = "38a818ded6dcd1759e4633a36502b693c8b14858" }
 cities-json = "0.3.8"
+
+pprof = { version = "0.12", features = ["flamegraph"] }
 
 [features]
 default = ["clap"]
@@ -50,6 +57,3 @@ prost-build = "0.11"
 
 [profile.bench]
 lto = true
-
-[target.'cfg(not(target_env = "msvc"))'.dependencies]
-pprof = {version = "0.12", features = ["flamegraph"]}
